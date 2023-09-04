@@ -1,36 +1,44 @@
-const Joi = require("joi");
-
-//Input Validation scheme using joi
-const scheme = Joi.object().keys({
-  email: Joi.string().email().required(),
-  password: Joi.string().required(),
-});
-
-//User Login
-const userLogin = async (req, res) => {
-  try {
-    const validateUser = await scheme.validateAsync(req.query);
-
-    if (validateUser.error) {
-      res.send("BAD REQUEST! ERROR 401" + error);
-    }
-    res.send("Login Successful.");
-  } catch (error) {
-    res.send("BAD REQUEST! ERROR 400" + error);
-  }
-};
-//User SignUp
-
-const userSignup = async (req, res) => {
-  try {
-    
-  } catch (error) {}
-  res.send("SignUp successful.");
-};
-
-//Export
-
+const authService = require("../service/authService");
+const { schema, loginSchema } = require("./userSchema");
 module.exports = {
-  userLogin,
-  userSignup,
+  signup: async function (req, res) {
+    try {
+      const { error } = schema.validate(req.body);
+      if (error) {
+        return res.status(400).json({ msg: error.message });
+      }
+
+      const response = await authService.createUser(req.body);
+      res.send(response);
+    } catch (e) {
+      console.log(e);
+    }
+  },
+  updateUser: async function (req, res) {
+    try {
+      const { error } = schema.validate(req.body);
+      if (error) {
+        return res.status(400).json({ msg: error.message });
+      }
+      id = req.query.id;
+      const response = await authService.updateUser(id, req.body);
+
+      res.send(response);
+    } catch (e) {
+      console.log(e);
+    }
+  },
+  login: async function (req, res) {
+    try {
+      const { error } = loginSchema.validate(req.body);
+      if (error) {
+        return res.status(400).json({ msg: error.message });
+      }
+
+      const response = await authService.login(req.body);
+      res.send(response);
+    } catch (e) {
+      console.log(e);
+    }
+  },
 };
