@@ -1,5 +1,8 @@
 const authService = require("../service/authService");
-const { schema, loginSchema } = require("./userSchema");
+const {
+  schema,
+  loginSchema,
+} = require("./validationSchema/authenticationSchema");
 module.exports = {
   signup: async function (req, res) {
     try {
