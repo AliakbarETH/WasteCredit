@@ -1,9 +1,8 @@
-var express = require("express");
-var router = express.Router();
+const router = require("express").Router();
+const { signup, updateUser, login } = require("../controller/authentication");
 
-const { userLogin, userSignup } = require("../controller/authentication");
-
-router.post("/login", userLogin);
-router.get("/signup", userSignup);
+router.post("/signup", signup);
+router.put("/updateUser", updateUser);
+router.post("/login", login);
 
 module.exports = router;
