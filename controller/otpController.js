@@ -10,6 +10,7 @@ module.exports = {
         const response = { Status: "Failure", Details: "Type not provided" };
         return res.status(400).send(response);
       }
+      
     } catch (error) {
       throw error;
     }

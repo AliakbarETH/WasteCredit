@@ -1,4 +1,3 @@
-const { func } = require("joi");
 const userModel = require("../model/userModel");
 module.exports = {
   createUser: async function (body) {
