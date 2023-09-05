@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // app.use("/", userAuthentication);
 app.use("/user", userAuthentication);
-app.use("/sendotp", otpRoutess);
+app.use("/sendotp", otpRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
