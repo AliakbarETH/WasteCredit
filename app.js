@@ -5,7 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 var userAuthentication = require("./routes/authenticationRoutes");
-
+var otpRoutes = require("./routes/otpRoutes");
 var app = express();
 
 // view engine setup
@@ -20,6 +20,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // app.use("/", userAuthentication);
 app.use("/user", userAuthentication);
+app.use("/sendotp", otpRoutess);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,6 +1,7 @@
 var otpGenerator = require("otp-generator");
 const nodemailer = require("nodemailer");
 const otpModel = require("../model/otpModel");
+const encode = require("../middleware/crypt");
 
 module.exports = {
   send_otp: async function (email, type) {
