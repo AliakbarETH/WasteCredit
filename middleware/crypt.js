@@ -2,9 +2,10 @@ const crypto = require("crypto");
 
 // First we get our unique key to encrypt our object
 var password = process.env["CRYPT_PASSWORD"];
-
+// Generate a random IV of 16 bytes for AES-128
+const iv = crypto.randomBytes(16);
 // We then get our unique Initialization Vector
-var iv = Buffer.from(process.env["IV"]);
+// var iv = Buffer.from(process.env["IV"]);
 
 // To be used as salt in encryption and decryption
 var ivstring = iv.toString("hex");
