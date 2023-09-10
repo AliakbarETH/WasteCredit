@@ -8,7 +8,8 @@ const iv = crypto.randomBytes(16);
 // var iv = Buffer.from(process.env["IV"]);
 
 // To be used as salt in encryption and decryption
-var ivstring = iv.toString("hex");
+var ivstring = Buffer.alloc(16, 0);
+// iv.toString("hex");
 
 // Function to find SHA1 Hash of password key
 function sha1(input) {

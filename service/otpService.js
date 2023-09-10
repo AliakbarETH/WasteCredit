@@ -29,8 +29,8 @@ module.exports = {
     };
     // console.log(details);
     // Encrypt the details object
-    // const encoded = await encode(JSON.stringify(details));
-
+    const encoded = await encode(JSON.stringify(details));
+console.log(encoded)
     //Choose message template according type
     if (type) {
       if (type == "VERIFICATION") {
@@ -64,7 +64,7 @@ module.exports = {
         pass: process.env.EMAIL_PASSWORD,
       },
     });
-    console.log(transporter);
+
     const mailOptions = {
       from: "alyanalam780@gmail.com",
       to: `${email}`,
@@ -105,7 +105,8 @@ module.exports = {
         // Handle the success case, e.g., return a success response
         const successResponse = {
           Status: "Success",
-          Details: "Email sent successfully",
+          // Details: "Email sent successfully",
+          Details: encoded,
         };
 
         return successResponse;
