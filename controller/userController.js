@@ -8,7 +8,7 @@ module.exports = {
       if (error) {
         return res.status(400).json({ msg: error.message });
       }
-      id = req.query.id;
+      id = req.query.user_id;
       const response = await userService.updateUser(id, req.body);
 
       res.send(response);
