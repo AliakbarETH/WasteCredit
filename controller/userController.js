@@ -9,7 +9,7 @@ module.exports = {
         return res.status(400).json({ msg: error.message });
       }
       id = req.query.id;
-      const response = await authService.updateUser(id, req.body);
+      const response = await userService.updateUser(id, req.body);
 
       res.send(response);
     } catch (e) {
