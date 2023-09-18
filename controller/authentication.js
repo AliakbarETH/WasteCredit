@@ -1,6 +1,6 @@
 const authService = require("../service/authenticationService");
 const {
-  schema,
+schema,
   loginSchema,
 } = require("./validationSchema/authenticationSchema");
 module.exports = {
@@ -12,20 +12,6 @@ module.exports = {
       }
 
       const response = await authService.createUser(req.body);
-      res.send(response);
-    } catch (e) {
-      console.log(e);
-    }
-  },
-  updateUser: async function (req, res) {
-    try {
-      const { error } = schema.validate(req.body);
-      if (error) {
-        return res.status(400).json({ msg: error.message });
-      }
-      id = req.query.id;
-      const response = await authService.updateUser(id, req.body);
-
       res.send(response);
     } catch (e) {
       console.log(e);
