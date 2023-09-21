@@ -1,32 +1,9 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-// import SplashScreen from "./src/screens/splash/splash";
+import { createAppContainer } from "react-navigation";
+import AppNavigator from "./AppNavigator"; // Import the navigator configuration
 
-const Stack = createStackNavigator();
+const AppContainer = createAppContainer(AppNavigator);
 
-const App = () => {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="SplashScreen">
-        <Stack.Screen
-          name="SplashScreen"
-          component={SplashScreen}
-          options={{ headerShown: false }}
-        />
-        {/* Add your other screens here */}
-        {/* <Stack.Screen name="MainScreen" component={MainScreen} /> */}
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-};
-
-export default App;
-
-/*
-  View -> div
-  Text -> p
-  Image -> img
-  ScrollView -> div (with multiple components and views)
-  TextInput -> input
- */
+export default function App() {
+  return <AppContainer />;
+}
