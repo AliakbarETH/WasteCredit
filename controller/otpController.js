@@ -47,7 +47,7 @@ module.exports = {
         otp,
         check
       );
-      console.log("2");
+
       return res.send(response);
     } catch (err) {
       const response = { Status: "Failure1", Details: err.message };
