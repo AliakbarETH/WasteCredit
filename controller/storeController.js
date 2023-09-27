@@ -16,8 +16,9 @@ module.exports = {
       if (error) {
         return res.status(400).json({ msg: error.message });
       }
-      const response = storeService.createStore(req.body);
-      res.send(response);
+      const response = await storeService.createStore(req.body);
+      console.log(response);
+      return res.status(400).json(response);
     } catch (error) {
       const response = { Status: "Failure", Details: error.message };
       return res.status(400).send(response);
