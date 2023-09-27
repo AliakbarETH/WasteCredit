@@ -45,15 +45,17 @@ module.exports = {
       console.log(e);
     }
   },
-  deleteStore : async (id) => {
+  deleteStore: async (id) => {
     try {
-      const response = await storeModel.getStoreById(id);
-      if (response) {
-        return response;
+      const store = await storeModel.getStoreById(id);
+      if (!store) {
+        return "Store does not  exist";
       }
-      return "Store does not  exist";
+      await storeModel.deleteStore(id);
+
+      return "Store delete Succcessfully.";
     } catch (e) {
       console.log(e);
     }
-  }
+  },
 };

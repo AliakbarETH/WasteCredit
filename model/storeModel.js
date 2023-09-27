@@ -25,7 +25,7 @@ module.exports = {
     );
   },
   deleteStore: async function (id) {
-    return await models.Store.delete({
+    return await models.Store.destroy({
       where: {
         id,
       },

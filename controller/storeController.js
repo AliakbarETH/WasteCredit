@@ -51,7 +51,7 @@ module.exports = {
   },
   deleteStore: async function (req, res) {
     try {
-      const id = req.body.id;
+      const { id } = req.params;
       const response = await storeService.deleteStore(id);
       res.send(response);
     } catch (error) {
