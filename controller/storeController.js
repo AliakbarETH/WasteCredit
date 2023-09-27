@@ -40,7 +40,7 @@ module.exports = {
       if (error) {
         return res.status(400).json({ msg: error.message });
       }
-      id = req.query.user_id;
+      id = req.query.id;
       const response = await storeService.updateStore(id, req.body);
 
       res.send(response);

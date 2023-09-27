@@ -21,7 +21,7 @@ module.exports = {
       return response;
     }
   },
-  getStorebyid:async(id) =>{
+  getStorebyid: async (id) => {
     try {
       const response = await storeModel.getStoreById(id);
       if (response) {
@@ -31,5 +31,18 @@ module.exports = {
     } catch (e) {
       console.log(e);
     }
-  }
+  },
+  updateStore: async (id, body) => {
+    try {
+      const getStore = await storeModel.getStoreById(id);
+      if (getStore) {
+        const response = await storeModel.updateUser(id, body);
+
+        return response;
+      }
+      return "Store does not  exist";
+    } catch (e) {
+      console.log(e);
+    }
+  },
 };
