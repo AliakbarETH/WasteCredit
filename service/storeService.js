@@ -21,4 +21,15 @@ module.exports = {
       return response;
     }
   },
+  getStorebyid:async(id) =>{
+    try {
+      const response = await storeModel.getStoreById(id);
+      if (response) {
+        return response;
+      }
+      return "Store does not  exist";
+    } catch (e) {
+      console.log(e);
+    }
+  }
 };

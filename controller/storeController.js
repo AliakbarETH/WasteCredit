@@ -26,11 +26,11 @@ module.exports = {
   },
   getStoreById: async function (req, res) {
     try {
-      const store_id = req.body.store_id;
-      const store_name = req.body.store_id;
-      res.send(store_id, store_name);
-    } catch (error) {
-      const response = { Status: "Failure", Details: error.message };
+      const user_id = req.body.user_id;
+      const response = await storeService.getStorebyid(user_id);
+      res.send(response);
+    } catch (e) {
+      const response = { Status: "Failure", Details: e.message };
       return res.status(400).send(response);
     }
   },
