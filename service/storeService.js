@@ -1,17 +1,17 @@
-const userModel = require("../model/userModel");
+const storeModel = require("../model/storeModel");
 
 module.exports = {
-  setStore: async (id, body) => {
+  createStore: async (body) => {
     try {
-      const getUser = await userModel.getUserById(id);
-      if (getUser) {
-        const response = await userModel.updateUser(id, body);
-
-        return response;
+      const existingStore = await storeModel.findStoreByEmail(body.email);
+      if (existingStore) {
+        return { error: "Store already exists" };
       }
-      return "User does not  exist";
-    } catch (e) {
-      console.log(e);
+      const response = await storeModel.createUser(body);
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log(error);
     }
   },
   getStore: async (user_id) => {
