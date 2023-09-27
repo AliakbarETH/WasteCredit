@@ -7,7 +7,7 @@ module.exports = {
       if (existingStore) {
         return { error: "Store already exists" };
       }
-      const response = await storeModel.createUser(body);
+      const response = await storeModel.createStore(body);
       console.log(response);
       return response;
     } catch (error) {

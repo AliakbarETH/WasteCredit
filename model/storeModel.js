@@ -1,14 +1,14 @@
 const { models } = require("./index");
 module.exports = {
   findUserByEmail: async function (email) {
-    return await models.User.findOne({
+    return await models.Store.findOne({
       where: {
         email,
       },
     });
   },
-  createUser: async function (body) {
-    return await models.User.create({ ...body });
+  createStore: async function (body) {
+    return await models.Store.create({ ...body });
   },
   getUserById: async function (id) {
     return await models.User.findByPk(id);
