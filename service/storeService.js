@@ -36,7 +36,7 @@ module.exports = {
     try {
       const getStore = await storeModel.getStoreById(id);
       if (getStore) {
-        const response = await storeModel.updateUser(id, body);
+        const response = await storeModel.updateStore(id, body);
 
         return response;
       }
