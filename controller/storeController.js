@@ -26,8 +26,8 @@ module.exports = {
   },
   getStoreById: async function (req, res) {
     try {
-      const user_id = req.body.user_id;
-      const response = await storeService.getStorebyid(user_id);
+      const id = req.body.id;
+      const response = await storeService.getStorebyid(id);
       res.send(response);
     } catch (e) {
       const response = { Status: "Failure", Details: e.message };
