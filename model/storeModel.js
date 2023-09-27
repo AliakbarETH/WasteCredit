@@ -24,4 +24,11 @@ module.exports = {
       }
     );
   },
+  deleteStore: async function (id) {
+    return await models.Store.delete({
+      where: {
+        id,
+      },
+    });
+  },
 };

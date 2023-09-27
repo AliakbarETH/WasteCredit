@@ -45,4 +45,15 @@ module.exports = {
       console.log(e);
     }
   },
+  deleteStore : async (id) => {
+    try {
+      const response = await storeModel.getStoreById(id);
+      if (response) {
+        return response;
+      }
+      return "Store does not  exist";
+    } catch (e) {
+      console.log(e);
+    }
+  }
 };
