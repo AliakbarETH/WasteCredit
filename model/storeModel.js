@@ -1,6 +1,7 @@
 const { models } = require("./index");
 module.exports = {
-  findUserByEmail: async function (email) {
+  findStoreByEmail: async function (email) {
+    console.log("3");
     return await models.Store.findOne({
       where: {
         email,
@@ -10,11 +11,11 @@ module.exports = {
   createStore: async function (body) {
     return await models.Store.create({ ...body });
   },
-  getUserById: async function (id) {
-    return await models.User.findByPk(id);
+  getStoreById: async function (id) {
+    return await models.Store.findByPk(id);
   },
-  updateUser: async function (id, body) {
-    return await models.User.update(
+  updateStore: async function (id, body) {
+    return await models.Store.update(
       { ...body },
       {
         where: {

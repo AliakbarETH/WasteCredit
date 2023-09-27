@@ -26,11 +26,11 @@ Store.init(
       allowNull: false,
     },
     latitude: {
-      type: Sequelize.DECIMAL(9, 6), // Adjust precision and scale as needed
+      type: DataTypes.DECIMAL(9, 6), // Adjust precision and scale as needed
       allowNull: false,
     },
     longitude: {
-      type: Sequelize.DECIMAL(9, 6), // Adjust precision and scale as needed
+      type: DataTypes.DECIMAL(9, 6), // Adjust precision and scale as needed
       allowNull: false,
     },
   },
