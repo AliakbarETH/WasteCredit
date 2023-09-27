@@ -8,7 +8,7 @@ const db = {};
 const models = {
   User,
   OTP,
-  Store
+  Store,
 };
 sequelize.model = models;
 db.sequelize = sequelize;
