@@ -54,6 +54,8 @@ module.exports = {
   },
   getAllStores: async function (req, res) {
     try {
+      const response = await storeService.getAllStores();
+      res.send(response);
     } catch (error) {
       const response = { Status: "Failure", Details: error.message };
       return res.status(400).send(response);
