@@ -1,7 +1,10 @@
+const { Store } = require("./entities/Store");
 const { models } = require("./index");
 module.exports = {
+  getAllStores: async function () {
+    return await models.Store.findAll();
+  },
   findStoreByEmail: async function (email) {
-    console.log("3");
     return await models.Store.findOne({
       where: {
         email,
