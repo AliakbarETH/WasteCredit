@@ -58,4 +58,16 @@ module.exports = {
       console.log(e);
     }
   },
+  getAllStores: async () => {
+    try {
+      const response = await storeModel.getAllStores();
+      if (response) {
+        return response;
+      }
+      return "Store does not  exist";
+    } catch (error) {
+      const response = { Status: "Failure", Details: "Bad Request" };
+      return response;
+    }
+  },
 };
