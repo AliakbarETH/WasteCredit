@@ -52,7 +52,7 @@ module.exports = {
       return res.status(400).send(response);
     }
   },
-  getAllStore: async function (req, res) {
+  getAllStores: async function (req, res) {
     try {
     } catch (error) {
       const response = { Status: "Failure", Details: error.message };
