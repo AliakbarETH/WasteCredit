@@ -7,6 +7,7 @@ var logger = require("morgan");
 var userAuthentication = require("./routes/authenticationRoutes");
 var otpRoutes = require("./routes/otpRoutes");
 var userRoutes = require("./routes/userRoutes");
+var storeRoutes = require("./routes/storeRoutes");
 var app = express();
 
 // view engine setup
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/userauth", userAuthentication);
 app.use("/sendotp", otpRoutes);
 app.use("/user", userRoutes);
+app.use("/store", storeRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

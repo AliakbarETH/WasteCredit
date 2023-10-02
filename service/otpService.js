@@ -61,11 +61,11 @@ module.exports = {
       upperCase: false,
       specialChars: false,
     });
-    console.log(otp);
+    // console.log(otp);
     const now = new Date();
-    console.log(now);
+    // console.log(now);
     const expiration_time = AddMinutesToDate(now, 10);
-    console.log(expiration_time);
+    // console.log(expiration_time);
     const otp_instance = await otpModel.createOTP(otp, expiration_time);
     // console.log(otp_instance);
     // Create details object containing the email and otp id
@@ -79,7 +79,7 @@ module.exports = {
     // console.log(details);
     // Encrypt the details object
     const encoded = await encode(JSON.stringify(details));
-    console.log(encoded);
+    // console.log(encoded);
     //Choose message template according type
     if (type) {
       if (type == "VERIFICATION") {
