@@ -1,6 +1,6 @@
 const authService = require("../service/authenticationService");
 const {
-schema,
+  schema,
   loginSchema,
 } = require("./validationSchema/authenticationSchema");
 module.exports = {
@@ -14,7 +14,8 @@ module.exports = {
       const response = await authService.createUser(req.body);
       res.send(response);
     } catch (e) {
-      console.log(e);
+      const response = { Status: "Failure", Details: e.message };
+      return res.status(400).send(response);
     }
   },
   login: async function (req, res) {
@@ -25,9 +26,10 @@ module.exports = {
       }
 
       const response = await authService.login(req.body);
-      res.send(response);
+      return res.send(response);
     } catch (e) {
-      console.log(e);
+      const response = { Status: "Failure", Details: e.message };
+      return res.status(400).send(response);
     }
   },
 };

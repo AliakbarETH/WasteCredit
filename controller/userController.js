@@ -13,7 +13,8 @@ module.exports = {
 
       res.send(response);
     } catch (e) {
-      console.log(e);
+      const response = { Status: "Failure", Details: e.message };
+      return res.status(400).send(response);
     }
   },
   getUser: async function (req, res) {
@@ -22,7 +23,8 @@ module.exports = {
       const response = await userService.getUserbyid(user_id);
       res.send(response);
     } catch (e) {
-      console.log(e);
+      const response = { Status: "Failure", Details: e.message };
+      return res.status(400).send(response);
     }
   },
 };
