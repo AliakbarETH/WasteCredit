@@ -7,8 +7,8 @@ module.exports = {
       },
     });
   },
-  createUser: async function (body) {
-    return await models.User.create({ ...body });
+  createUser: async function (body, hashedPassword) {
+    return await models.User.create({ ...body, password: hashedPassword });
   },
   getUserById: async function (id) {
     return await models.User.findByPk(id);

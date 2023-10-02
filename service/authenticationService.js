@@ -1,4 +1,5 @@
 const userModel = require("../model/userModel");
+const bcrypt = require("bcryptjs");
 module.exports = {
   createUser: async function (body) {
     try {
@@ -6,8 +7,21 @@ module.exports = {
       if (existingUser) {
         return { error: "User already exists" };
       }
-      const response = await userModel.createUser(body);
-      console.log(response);
+      const saltRounds = 10;
+      const plaintextPassword = body.password;
+      bcrypt.hash(
+        plaintextPassword,
+        saltRounds,
+       async function (err, hashedPassword) {
+          if (err) {
+            return { error: "Re-Type Password" };
+          } else {
+           
+            const response = await userModel.createUser(body,hashedPassword);
+            console.log(response);
+          }
+        }
+      );
       return response;
     } catch (error) {
       console.log(error);
