@@ -31,7 +31,6 @@ module.exports = {
       );
       return "User Create.";
 
-      // save user token
     } catch (error) {
       console.log(error);
     }
@@ -40,7 +39,7 @@ module.exports = {
   login: async function (body) {
     try {
       const existingUser = await userModel.findUserByEmail(body.email);
-      console.log(existingUser);
+      // console.log(existingUser);
       if (existingUser) {
         const plaintextPassword = body.password;
 
@@ -52,6 +51,11 @@ module.exports = {
         );
 
         if (result) {
+            // create token
+      const token = jwt.sign({ email: body.email }, process.env.TOKEN_KEY, {
+        expiresIn: "2h",
+      });
+        userModel.updateToken(existingUser.dataValues.id,token)
           return existingUser;
         } else {
           return "Password incorrect";

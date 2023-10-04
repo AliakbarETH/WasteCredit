@@ -23,4 +23,14 @@ module.exports = {
       }
     );
   },
+  updateToken: async function (id, token) {
+    return await models.User.update(
+      { token:token },
+      {
+        where: {
+          id,
+        },
+      }
+    );
+  },
 };
