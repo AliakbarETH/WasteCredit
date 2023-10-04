@@ -17,9 +17,9 @@ module.exports = {
   getUserById: async function (id) {
     return await models.User.findByPk(id);
   },
-  updateUser: async function (id, body) {
+  updateUser: async function (id, body, hashedPassword) {
     return await models.User.update(
-      { ...body },
+      { ...body, password: hashedPassword },
       {
         where: {
           id,
