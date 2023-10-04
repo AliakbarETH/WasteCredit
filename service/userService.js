@@ -22,7 +22,7 @@ module.exports = {
                 body,
                 hashedPassword
               );
-              console.log(response);
+              // console.log(response);
             }
           }
         );
