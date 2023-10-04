@@ -4,7 +4,6 @@ const storeModel = require("../model/storeModel");
 module.exports = {
   createStore: async (body) => {
     try {
-      console.log("1");
       const existingStore = await storeModel.findStoreByEmail(body.email);
       if (existingStore) {
         return { error: "Store already exists" };

@@ -1,13 +1,20 @@
 const { response } = require("express");
 const userModel = require("../model/userModel");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 module.exports = {
   createUser: async function (body) {
     try {
+    
       const existingUser = await userModel.findUserByEmail(body.email);
       if (existingUser) {
         return { error: "User already exists" };
       }
+      // create token
+      const token = jwt.sign({ email: body.email }, process.env.TOKEN_KEY, {
+        expiresIn: "2h",
+      });
+      //hashed password
       const saltRounds = 10;
       const plaintextPassword = body.password;
       bcrypt.hash(
@@ -17,12 +24,14 @@ module.exports = {
           if (err) {
             return { error: "Re-Type Password" };
           } else {
-            const response = await userModel.createUser(body, hashedPassword);
-            console.log(response);
+            const response = await userModel.createUser(body, hashedPassword, token);
+            // console.log(response);
           }
         }
       );
-      return response;
+      return "User Create.";
+
+      // save user token
     } catch (error) {
       console.log(error);
     }

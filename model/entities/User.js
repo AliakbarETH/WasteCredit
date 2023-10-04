@@ -33,6 +33,10 @@ User.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    token: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     timestamps: true,
